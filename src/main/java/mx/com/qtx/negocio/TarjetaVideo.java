@@ -9,8 +9,8 @@ public class TarjetaVideo extends Componente {
 	 * precioBase, tipo); this.memoria = memoria; }
 	 */	
 	public TarjetaVideo(String marca, String modelo, double costo, double precioBase, 
-			TipoComponente tipoComponente, String memoria) {
-		super(marca, modelo, costo, precioBase, tipoComponente);
+			String memoria) {
+		super(marca, modelo, costo, precioBase);
 		this.memoria = memoria;
 	}
 
@@ -26,6 +26,11 @@ public class TarjetaVideo extends Componente {
 	public double cotizar(int cantidad) {
 		int unidadesXcotizar = (cantidad / 3) * 2 + (cantidad % 3);
 		return unidadesXcotizar * this.getPrecioBase();
+	}
+
+	@Override
+	public String getTipo() {
+		return "Tarjeta de Video";
 	}
 
 }

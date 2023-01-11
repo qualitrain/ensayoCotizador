@@ -13,7 +13,7 @@ public class ComponenteTest {
 	}
 	public static void probarCalcularUtilidad() {
 		//Instanciar un objeto de la clase
-		Componente miComponente = new Componente("Sony","X-100",1500,3000, TipoComponente.MONITOR);
+		Componente miComponente = Componente.crearComponente("Sony","X-100",1500,3000, TipoComponente.MONITOR, null, null);
 		double utilidad = miComponente.calcularUtilidad();
 		if(utilidad == 1500) {
 			System.out.println("probarCalcularUtilidad funciona OK");
@@ -25,13 +25,13 @@ public class ComponenteTest {
 	}
 	public static void probarMostrarCaracteristicas() {
 		System.out.println("- probarMostrarCaracteristicas -");
-		Componente miComponente = new Componente("Sony","X-100",1500,3000, TipoComponente.MONITOR);
+		Componente miComponente = Componente.crearComponente("Sony","X-100",1500,3000, TipoComponente.MONITOR, null, null);
 		miComponente.mostrarCaracteristicas();
 	}
  
 	public static void probarSetMarca() {
 		System.out.println("- probarSetMarca -");
-		Componente miComponente = new Componente("Sony","X-100",1500,3000, TipoComponente.MONITOR);
+		Componente miComponente = Componente.crearComponente("Sony","X-100",1500,3000, TipoComponente.MONITOR, null, null);
 		miComponente.setMarca("H3");
 		
 		if(miComponente.getMarca().equals("H3")) {
@@ -44,9 +44,9 @@ public class ComponenteTest {
 	
 	public static void probarCotizar() {
 		System.out.println("- probarCotizar -");
-		Componente miComponente = new Componente("Sony","X-100",1500,3000,TipoComponente.MONITOR);
+		Componente miComponente = Componente.crearComponente("Sony","X-100",1500,3000, TipoComponente.MONITOR, null, null);
 		double precioCotizado = miComponente.cotizar(10);
-		if(precioCotizado == 30000) {
+		if(precioCotizado == 30000 * .9) {
 			System.out.println("cotizar funciona OK");						
 		}
 		else {

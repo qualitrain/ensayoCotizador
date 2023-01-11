@@ -1,43 +1,42 @@
 package mx.com.qtx.negocio;
 
-public class Componente {
+public abstract class Componente {
 	protected String marca;
 	protected String modelo;
 	protected double costo;
 	protected double precioBase;
 	protected String tipo;
-	protected TipoComponente tipoComponente;
 	
+	public abstract String getTipo();
+	
+	public static Componente crearComponente(String marca, String modelo, double costo, double precioBase, 
+			TipoComponente tipoComponente, String capacidad, String memoria) {
+		Componente unComponente = null;
+		switch (tipoComponente) {
+		case DISCO:
+			unComponente = new DiscoDuro(marca, modelo, costo, precioBase, capacidad);
+			return unComponente;
+		case TARJETA_VIDEO:
+			unComponente = new TarjetaVideo(marca, modelo, costo, precioBase, memoria);
+			return unComponente;
+		case MONITOR:
+			unComponente = new Monitor(marca, modelo, costo, precioBase);
+			return unComponente;
+		case PC:
+			return null;
+		default:
+			break;
+		}
+		return null;
+	}
 
-	public Componente(String marca, String modelo, double costo, double precioBase, TipoComponente tipoComponente) {
+	protected Componente(String marca, String modelo, double costo, double precioBase) {
 		super();
 		this.marca = marca;
 		this.modelo = modelo;
 		this.costo = costo;
 		this.precioBase = precioBase;
-		this.tipoComponente = tipoComponente;
 	}
-
-
-	public String getTipo() {
-		return tipo;
-	}
-
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-
-	public TipoComponente getTipoComponente() {
-		return tipoComponente;
-	}
-
-
-	public void setTipoComponente(TipoComponente tipoComponente) {
-		this.tipoComponente = tipoComponente;
-	}
-
 
 	public String getMarca() {
 		return marca;
@@ -77,7 +76,9 @@ public class Componente {
 	}
 	
 	public String getDescripcion() {
-		String descripcion = this.tipoComponente + " " + " marca " + this.marca + ", "
+		String descripcion = 
+				this.getTipo() + " " + 
+		        " marca " + this.marca + ", "
 				+ "modelo " + this.modelo;
 		return descripcion;	
 	}

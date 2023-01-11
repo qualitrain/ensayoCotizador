@@ -1,6 +1,6 @@
 package mx.com.qtx.test;
 
-import mx.com.qtx.negocio.TarjetaVideo;
+import mx.com.qtx.negocio.Componente;
 import mx.com.qtx.negocio.TipoComponente;
 
 public class TarjetaVideoTest {
@@ -9,7 +9,7 @@ public class TarjetaVideoTest {
 	}
 	public static void probarCotizar() {
 		System.out.println("- probarCotizar -");
-		TarjetaVideo tarjeta = new TarjetaVideo("Nvidia", "Perrus", 1000, 2000, TipoComponente.TARJETA_VIDEO, "8Gb");
+		Componente tarjeta = Componente.crearComponente("Nvidia", "Perrus", 1000, 2000, TipoComponente.TARJETA_VIDEO, null, "8Gb");
 		double cotizacion5 = tarjeta.cotizar(5);
 		if(cotizacion5==8000) {
 			System.out.println("Cotizacion de 5 es correcta");

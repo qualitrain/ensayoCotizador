@@ -2,8 +2,6 @@ package mx.com.qtx.test;
 
 import mx.com.qtx.casosDeUso.Cotizador;
 import mx.com.qtx.negocio.Componente;
-import mx.com.qtx.negocio.Monitor;
-import mx.com.qtx.negocio.TarjetaVideo;
 import mx.com.qtx.negocio.TipoComponente;
 
 public class CotizadorTest {
@@ -15,9 +13,9 @@ public class CotizadorTest {
 
 	public static void probarAgregarDetalleCotizacion() {
 		System.out.println("- probarAgregarDetalleCotizacion -");
-		Componente componente1 = new Componente("Sony","X-100",1500,3000,TipoComponente.MONITOR);
-		Componente componente2 = new Componente("Hitachi","Y-10",1200,3000,TipoComponente.DISCO);
-		Componente componente3 = new Componente("Lg","Z-1",1800,3500,TipoComponente.TARJETA_VIDEO);
+		Componente componente1 = Componente.crearComponente("Sony","X-100",1500,3000,TipoComponente.MONITOR, null, null);
+		Componente componente2 = Componente.crearComponente("Hitachi","Y-10",1200,3000,TipoComponente.DISCO, "1Tb", null);
+		Componente componente3 = Componente.crearComponente("Lg","Z-1",1800,3500,TipoComponente.TARJETA_VIDEO, null, "4Gb");
 		
 		Cotizador unCotizador = new Cotizador(5);
 		unCotizador.agregarDetalleCotizacion(5, componente1);
@@ -38,9 +36,9 @@ public class CotizadorTest {
 	public static void probarEmitirCotizacion() {
 		System.out.println("- probarEmitirCotizacion -");
 
-		Componente monitor1 = new Monitor("Sony","X-100",1500,3000, TipoComponente.MONITOR);
-		Componente componente2 = new Componente("Hitachi","Y-10",1200,3000,TipoComponente.DISCO);
-		TarjetaVideo componente3 = new TarjetaVideo("Lg","Z-1",500,1000,TipoComponente.TARJETA_VIDEO,"8Gb");
+		Componente monitor1 = Componente.crearComponente("Sony","X-100",1500,3000,TipoComponente.MONITOR, null, null);
+		Componente componente2 = Componente.crearComponente("Hitachi","Y-10",1200,3000,TipoComponente.DISCO, "1Tb", null);
+		Componente componente3 = Componente.crearComponente("Lg","Z-1",1800,3500,TipoComponente.TARJETA_VIDEO, null, "4Gb");
 		
 		Cotizador unCotizador = new Cotizador(5);
 		unCotizador.agregarDetalleCotizacion(5, monitor1);

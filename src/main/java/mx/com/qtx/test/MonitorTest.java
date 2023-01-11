@@ -1,6 +1,6 @@
 package mx.com.qtx.test;
 
-import mx.com.qtx.negocio.Monitor;
+import mx.com.qtx.negocio.Componente;
 import mx.com.qtx.negocio.TipoComponente;
 
 public class MonitorTest {
@@ -9,7 +9,7 @@ public class MonitorTest {
 	}
 	public static void probarCotizar() {
 		System.out.println("- probarCotizar -");
-		Monitor monitor = new Monitor("Sony", "Maximus", 1000, 2000, TipoComponente.MONITOR);
+		Componente monitor = Componente.crearComponente("Sony", "Maximus", 1000, 2000, TipoComponente.MONITOR, null, null);
 		double cotizacion2 = monitor.cotizar(2);
 		if(cotizacion2 == 4000)
 			System.out.println("Cotizacion de 2 monitores es correcta");
