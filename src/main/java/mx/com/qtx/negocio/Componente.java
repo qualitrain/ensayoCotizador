@@ -8,6 +8,7 @@ public abstract class Componente {
 	protected String tipo;
 	
 	public abstract String getTipo();
+	public abstract TipoComponente getTipoComponente();
 	
 	public static Componente crearComponente(String marca, String modelo, double costo, double precioBase, 
 			TipoComponente tipoComponente, String capacidad, String memoria) {
@@ -36,6 +37,12 @@ public abstract class Componente {
 		this.modelo = modelo;
 		this.costo = costo;
 		this.precioBase = precioBase;
+	}
+	
+	public static Pc crearComponente(PcBuilder config) {
+		Pc pc = new Pc(config.getMarca(), config.getModelo());
+		pc.setComponentesPc(config.getComponentesPc());
+		return pc;
 	}
 
 	public String getMarca() {

@@ -1,6 +1,8 @@
 package mx.com.qtx.test;
 
 import mx.com.qtx.negocio.Componente;
+import mx.com.qtx.negocio.Pc;
+import mx.com.qtx.negocio.PcBuilder;
 import mx.com.qtx.negocio.TipoComponente;
 
 public class ComponenteTest {
@@ -10,6 +12,9 @@ public class ComponenteTest {
 		probarMostrarCaracteristicas();
 		probarSetMarca();
 		probarCotizar();
+		probarCrearYcotizarPcConBuilder();
+		probarCrearYcotizarPcConBuilderYbuild();
+		probarGetMarcasComponente();
 	}
 	public static void probarCalcularUtilidad() {
 		//Instanciar un objeto de la clase
@@ -52,6 +57,55 @@ public class ComponenteTest {
 		else {
 			System.out.println("cotizar erróneo");									
 		}
+	}
+	public static void probarCrearYcotizarPcConBuilder() {
+		System.out.println("- probarCrearYcotizarPcConBuilder -");
+		PcBuilder miConfig = new PcBuilder("Dell","X-56");
+		
+		miConfig.agregarDisco("Seagate", "S100", 500, 1000, "2TB")
+		        .agregarDisco("Sony", "SS500", 560, 1200, "500Gb")
+		        .agregarMonitor("Samsung", "S500", 800, 2000)
+		        .agregarTarjeta("NVidia", "X-2000", 570, 1000, "2GB");
+		
+		Pc miPc = Componente.crearComponente(miConfig);
+		double precioCotizado = miPc.cotizar(1);
+		if(precioCotizado == ((1000 + 1200 + 2000 + 1000)*0.8)) {
+			System.out.println("Pc creada y cotizada correctamente =o)");
+		}
+		else
+			System.out.println("Pc creada y/o cotizada erróneamente:" + precioCotizado);
+		
+	}
+	public static void probarCrearYcotizarPcConBuilderYbuild() {
+		System.out.println("- probarCrearYcotizarPcConBuilderYbuild -");
+		PcBuilder miConfig = new PcBuilder("Dell","X-56");
+		
+		Pc miPc =miConfig.agregarDisco("Seagate", "S100", 500, 1000, "2TB")
+		        .agregarDisco("Sony", "SS500", 560, 1200, "500Gb")
+		        .agregarMonitor("Samsung", "S500", 800, 2000)
+		        .agregarTarjeta("NVidia", "X-2000", 570, 1000, "2GB")
+		        .build();
+		
+		double precioCotizado = miPc.cotizar(1);
+		if(precioCotizado == ((1000 + 1200 + 2000 + 1000)*0.8)) {
+			System.out.println("Pc creada y cotizada correctamente =o)");
+		}
+		else
+			System.out.println("Pc creada y/o cotizada erróneamente:" + precioCotizado);
+		
+	}
+	public static void probarGetMarcasComponente() {
+		System.out.println("- probarGetMarcasComponente -");
+		PcBuilder miConfig = new PcBuilder("Dell","X-56");
+		
+		Pc miPc =miConfig.agregarDisco("Seagate", "S100", 500, 1000, "2TB")
+		        .agregarDisco("Sony", "SS500", 560, 1200, "500Gb")
+		        .agregarMonitor("Samsung", "S500", 800, 2000)
+		        .agregarTarjeta("NVidia", "X-2000", 570, 1000, "2GB")
+		        .build();
+		
+		System.out.println(miPc.getMarcasComponente(TipoComponente.DISCO));
+		
 	}
 	
 }

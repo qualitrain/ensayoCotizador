@@ -14,4 +14,9 @@ public class DiscoDuro extends Componente {
 		return "Disco Duro";
 	}
 
+	@Override
+	public TipoComponente getTipoComponente() {
+		return TipoComponente.DISCO;
+	}
+
 }

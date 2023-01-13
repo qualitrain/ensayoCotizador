@@ -33,4 +33,9 @@ public class TarjetaVideo extends Componente {
 		return "Tarjeta de Video";
 	}
 
+	@Override
+	public TipoComponente getTipoComponente() {
+		return TipoComponente.TARJETA_VIDEO;
+	}
+
 }

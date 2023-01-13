@@ -24,4 +24,9 @@ public class Monitor extends Componente{
 		return "Monitor";
 	}
 
+	@Override
+	public TipoComponente getTipoComponente() {
+		return TipoComponente.MONITOR;
+	}
+
 }
