@@ -1,8 +1,9 @@
 package mx.com.qtx.casosDeUso;
 
 import mx.com.qtx.negocio.Componente;
+import mx.com.qtx.test.ICotizador;
 
-public class Cotizador {
+public class Cotizador implements ICotizador {
 	private int[] cantidades;
 	private Componente[] componentes;
 	private int nDetalles;
@@ -64,6 +65,17 @@ public class Cotizador {
 
 	public static void main(String[] args) {
 		System.out.println("Saludos a todos");
+	}
+
+
+	@Override
+	public int getCantidadComponente(int id) {
+		for(int i=0; i<this.componentes.length; i++) {
+			if(this.componentes[i].getId() == id) {
+				return this.cantidades[i];
+			}
+		}
+		return 0;
 	}
 
 }

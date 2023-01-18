@@ -1,6 +1,8 @@
 package mx.com.qtx.negocio;
 
 public abstract class Componente {
+	protected int id;
+	private static int idMaxAct=0; 
 	protected String marca;
 	protected String modelo;
 	protected double costo;
@@ -33,10 +35,14 @@ public abstract class Componente {
 
 	protected Componente(String marca, String modelo, double costo, double precioBase) {
 		super();
+//		System.out.println("Componente(...)");
+		Componente.idMaxAct++;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.costo = costo;
 		this.precioBase = precioBase;
+		this.id = Componente.idMaxAct;
+//		System.out.println(this);
 	}
 	
 	public static Pc crearComponente(PcBuilder config) {
@@ -45,6 +51,12 @@ public abstract class Componente {
 		return pc;
 	}
 
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getMarca() {
 		return marca;
 	}
@@ -91,6 +103,7 @@ public abstract class Componente {
 	}
 	
 	public void mostrarCaracteristicas(){
+		System.out.println("Id:" + id);
 		System.out.println("Marca:" + marca);
 		System.out.println("Modelo:" + modelo);
 		System.out.println("Costo:" + costo);
@@ -100,4 +113,10 @@ public abstract class Componente {
 	public double cotizar(int cantidad) {
 		return cantidad * precioBase;
 	}
+	@Override
+	public String toString() {
+		return "Componente [id=" + id + ", marca=" + marca + ", modelo=" + modelo + ", costo=" + costo + ", precioBase="
+				+ precioBase + ", tipo=" + tipo + "]";
+	}
+	
 }
